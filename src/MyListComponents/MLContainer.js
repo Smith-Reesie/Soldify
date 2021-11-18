@@ -45,6 +45,9 @@ const TableTheme = styled.div`
     border: 1px solid black;
     text-align: center;
         tbody {
-            border : red;
+            border : yellow;
+        }
+        th {
+            border: yellow;
         }
 `

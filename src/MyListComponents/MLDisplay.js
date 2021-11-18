@@ -8,23 +8,23 @@ function MLDisplay({ myListings, formState, setFormState, editListing}) {
     
 
     function handleListingChange() {
-        const updateObj = {
-            image: "",
-            name: "",
-            description:"",
-            category:"",
-            price: 0
+        // const updateObj = {
+        //     image: "",
+        //     name: "",
+        //     description:"",
+        //     category:"",
+        //     price: 0
         };
         fetch(`http://localhost:3001/user_listings/${id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify(updateObj)
+          body: JSON.stringify()
         })
         .then((r) => r.json())
         .then(editListing);
-    }
+    
 
     return (
         <div className= "listing image">

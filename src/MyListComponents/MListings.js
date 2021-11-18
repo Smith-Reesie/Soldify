@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from "styled-components"
 
 function MListings({myListing, handleLargeView}) {
 
@@ -10,6 +11,7 @@ function MListings({myListing, handleLargeView}) {
 
     
     return (
+    <Resize> 
         <tr className = "Listing_Container">
         <td>{name}</td>
         <td>{<img id='img' src={image} alt = {name}/>}</td>
@@ -18,7 +20,20 @@ function MListings({myListing, handleLargeView}) {
         <td>{description}</td>
         <button onClick = {()=>onClick(myListing)}>🔍</button>
         </tr>
+    </Resize>
+    
     )
 }
 
 export default MListings
+
+const Resize = styled.div`
+    border: 5px solid blue;
+    width: 80%;
+    height: 200px;
+        img{
+            width: 200px;
+        }
+
+
+`

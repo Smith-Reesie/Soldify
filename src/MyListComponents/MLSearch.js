@@ -25,7 +25,9 @@ export default MLSearch;
 
 const SearchBarTheme = styled.div`
     border: 1px solid red;
-        input, button{
-            justify-content: first baseline;
+        input{
+            justify-content: grid in-line;
+            width: 50%;
+            height: 30px;
     }
 `
