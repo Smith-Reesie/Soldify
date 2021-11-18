@@ -5,9 +5,11 @@ function MListings({myListing, setMyListings, handleLargeView, onRemove}) {
 
     const {id, name, image, category, price, description} = myListing
 
+
     function onClick(myListing) {
         handleLargeView(myListing)
     }
+
 
     function handleDelete(){
         fetch(`http://localhost:3000/sold_listings/${id}`,{
@@ -30,14 +32,15 @@ function MListings({myListing, setMyListings, handleLargeView, onRemove}) {
         <td><button onClick = {handleDelete}>🗑</button></td>
         </TableRow>
         </>
+
     )
 }
 
 export default MListings
-
 const TableRow = styled.tr`
 border: 1px soild orange;
 height: 20px;
 width: 10px;
+
 
 `

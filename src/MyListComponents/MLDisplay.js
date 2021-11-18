@@ -1,26 +1,31 @@
 import React from 'react'
 import styled from "styled-components"
-import MyListings from './MyListings';
 
 
-function MLDisplay({ myListings, formState, setFormState}) {
-
-    const {image, name, description, category, price} = myListings
+function MLDisplay({ myListings, formState, setFormState, editListing}) {
+    const {id, name, description, category, price} = myListings
     
 
-//     function handleListingChange() {
-//         fetch(`http://localhost:3001/user_listings/${name,category, description, price}`, {
-//           method: "PATCH",
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//           body: JSON.stringify({
-//             myListings: !myListings,
-//         }),
-//       })
-//     .then((r) => r.json())
-//     .then((updatedItem) => console.log(updatedItem));
-// }
+    function handleListingChange() {
+        // const updateObj = {
+        //     image: "",
+        //     name: "",
+        //     description:"",
+        //     category:"",
+        //     price: 0
+        };
+        fetch(`http://localhost:3001/user_listings/${id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify()
+        })
+        .then((r) => r.json())
+        .then(editListing);
+    
+
+
     return (
         <div className= "listing image">
             
@@ -28,9 +33,16 @@ function MLDisplay({ myListings, formState, setFormState}) {
             <div className="inline fields">
             <img src= {formState.image} alt= {name}/>
                 <input type="text" name={name} placeholder="Name" value={formState.name}/>
-                <input type="text" name={description} placeholder="Description" value={formState.description} />
-                <input type="text" name={category} placeholder="Category" value={formState.category} />
+
+                    <button className="edit" onClick={handleListingChange}>🔍</button>
+                <input type="text" name={description} placeholder="Description" value={formState.description}/>
+                    <button className="edit" onClick={handleListingChange}>🔍</button>
+                <input type="text" name={category} placeholder="Category" value={formState.category}/>
+                    <button className="edit" onClick={handleListingChange}>🔍</button>
                 <input type="number" name={price} placeholder="Sell Price" value={formState.price}/>
+                    <button className="edit" onClick={handleListingChange}>🔍</button>
+                            
+
             </div>
         </Listborder>
         </div>
@@ -49,4 +61,6 @@ const Listborder = styled.div`
   img{
       width: 100px;
   }
+
 `
+

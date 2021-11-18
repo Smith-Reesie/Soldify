@@ -26,6 +26,7 @@ function Listings({listing, onRemove}) {
         {/* <button onClick={handleDelete}>☆</button> */}
             </ListingCard>
         
+
     )
 }
 

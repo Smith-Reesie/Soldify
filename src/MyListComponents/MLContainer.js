@@ -4,6 +4,7 @@ import styled from "styled-components"
 
 
 function MLContainer({ myListings, onRemove, handleLargeView }) {
+
     // const [myListings, setMyListings] = useState ([])
     return (
         <TableTheme>
@@ -16,6 +17,7 @@ function MLContainer({ myListings, onRemove, handleLargeView }) {
                         <h5>NAME</h5>
                     </th>
                     <th>
+
                         <h5>IMAGE</h5>
                     </th>
                     <th>
@@ -31,8 +33,10 @@ function MLContainer({ myListings, onRemove, handleLargeView }) {
                 {myListings.map((listing) => <MListings
                     key = {listing.id}
                     myListing= {listing}
+
                     handleLargeView = {handleLargeView}
                     onRemove={onRemove}/>
+
                     // handleSearch={searchListings}/>
                     // setMyListings = {setMyListings}/>
                 )}
@@ -56,3 +60,4 @@ const TableTheme = styled.div`
             border: 1px soild red;
         }
 `
+

@@ -8,6 +8,7 @@ function Home({listings, search, setSearch, onRemove}) {
             <Search search={search}
                     setSearch={setSearch}/>
             <ListingContainer onRemove={onRemove} listings={listings} />
+
         </div>
     )
 }
