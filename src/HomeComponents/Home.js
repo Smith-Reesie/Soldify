@@ -1,22 +1,14 @@
-import React, { useEffect, useState }  from 'react'
+import React  from 'react'
 import ListingContainer from './ListingContainer'
 import Search from './Search'
 
-function Home() {
-    const[soldListings, setSoldListings]=  useState([]);
-
-    useEffect(() => {
-        fetch("http://localhost:3001/sold_listings")
-        .then((response) => response.json())
-        .then((data) => {
-          setSoldListings(data);
-          // console.log(data)
-        });
-      }, []);
+function Home({listings, search, setSearch, onRemove}) {
     return (
         <div>
-            <Search/>
-            <ListingContainer soldListings={soldListings}/>
+            <Search search={search}
+                    setSearch={setSearch}/>
+            <ListingContainer onRemove={onRemove} listings={listings} />
+
         </div>
     )
 }

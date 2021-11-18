@@ -1,20 +1,24 @@
-import React from 'react'
+import React, {useState} from 'react'
 import MListings from './MListings'
 import styled from "styled-components"
 
 
-function MLContainer({ myListings, handleLargeView }) {
+function MLContainer({ myListings, onRemove, handleLargeView }) {
+
     // const [myListings, setMyListings] = useState ([])
     return (
         <TableTheme>
         <table className = "table_listing"> TABLE OF LISTINGS
+            <>
+            </>
             <tbody>
                 <tr>
                     <th>
                         <h5>NAME</h5>
                     </th>
                     <th>
-                        <h5>IMAGE URL</h5>
+
+                        <h5>IMAGE</h5>
                     </th>
                     <th>
                         <h5>CATEGORY</h5>
@@ -29,7 +33,10 @@ function MLContainer({ myListings, handleLargeView }) {
                 {myListings.map((listing) => <MListings
                     key = {listing.id}
                     myListing= {listing}
-                    handleLargeView = {handleLargeView}/>
+
+                    handleLargeView = {handleLargeView}
+                    onRemove={onRemove}/>
+
                     // handleSearch={searchListings}/>
                     // setMyListings = {setMyListings}/>
                 )}
@@ -42,12 +49,15 @@ export default MLContainer;
 
 
 const TableTheme = styled.div`
-    border: 1px solid black;
+    border: 1px solid orange;
     text-align: center;
+    color: orange;
+    justify-content: space-evenly;
         tbody {
-            border : yellow;
+            border : red;
         }
-        th {
-            border: yellow;
+        table{
+            border: 1px soild red;
         }
 `
+

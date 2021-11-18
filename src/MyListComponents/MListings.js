@@ -1,39 +1,46 @@
 import React from 'react'
 import styled from "styled-components"
 
-function MListings({myListing, handleLargeView}) {
+function MListings({myListing, setMyListings, handleLargeView, onRemove}) {
 
-    const {name, image, category, price, description} = myListing
+    const {id, name, image, category, price, description} = myListing
+
 
     function onClick(myListing) {
         handleLargeView(myListing)
     }
 
+
+    function handleDelete(){
+        fetch(`http://localhost:3000/sold_listings/${id}`,{
+        method: 'DELETE',
+        })
+        .then(resp => resp.json())
+        .then(()=>{onRemove(myListing)})
+        }
+
     
     return (
-    <Resize> 
-        <tr className = "Listing_Container">
+        <>
+        <TableRow className = "Listing_Container">
         <td>{name}</td>
-        <td>{<img id='img' src={image} alt = {name}/>}</td>
+        <td>{<img id='img' src={image}/>}</td>
         <td>{category}</td>  
         <td>{price}</td> 
         <td>{description}</td>
-        <button onClick = {()=>onClick(myListing)}>🔍</button>
-        </tr>
-    </Resize>
-    
+        <td><button onClick = {()=>onClick(myListing)}>🔍</button></td>
+        <td><button onClick = {handleDelete}>🗑</button></td>
+        </TableRow>
+        </>
+
     )
 }
 
 export default MListings
-
-const Resize = styled.div`
-    border: 5px solid blue;
-    width: 80%;
-    height: 200px;
-        img{
-            width: 200px;
-        }
+const TableRow = styled.tr`
+border: 1px soild orange;
+height: 20px;
+width: 10px;
 
 
 `
