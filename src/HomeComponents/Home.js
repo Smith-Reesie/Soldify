@@ -1,12 +1,13 @@
-import React from 'react'
+import React  from 'react'
 import ListingContainer from './ListingContainer'
 import Search from './Search'
 
-function Home() {
+function Home({listings, search, setSearch, onRemove}) {
     return (
         <div>
-            <Search/>
-            <ListingContainer/>
+            <Search search={search}
+                    setSearch={setSearch}/>
+            <ListingContainer onRemove={onRemove} listings={listings} />
         </div>
     )
 }
