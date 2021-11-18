@@ -2,23 +2,30 @@ import React from 'react'
 import Listings from './Listings'
 
 
-function ListingContainer() {
+function ListingContainer({soldListings}) {
+
     return (
-        <div>
-            <div>hh</div>
-            <div>nj</div>
-            
+        <>
             <table>
                 <tr>
                     <th>Product Name</th>
                     <th>Category</th>
                     <th>Price</th>    
                     <th>Sold</th>            
-                    </tr>
+                </tr>
+            
+            <div id = "sold-history">
+                {soldListings.map((soldListing) => {
+                    return (
+                    <Listings
+                        key = {soldListing.id}
+                        soldListing = {soldListing}/>
+                    );
+                })}
+            </div>
             </table>
-            <Listings/>
-        </div>
-    )
+        </>
+    );
 }
 
 export default ListingContainer
