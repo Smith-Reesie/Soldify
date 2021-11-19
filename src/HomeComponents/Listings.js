@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 function Listings({listing, onRemove}) {
 
-    const {id, name, image, description, category, price} = listing
+    const { name, image, description, category, price} = listing
 
     // function handleDelete(){
     //     fetch(`http://localhost:3000/sold_listings/${id}`,{

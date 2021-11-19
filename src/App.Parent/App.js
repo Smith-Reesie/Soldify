@@ -5,7 +5,7 @@ import MyListings from '../MyListComponents/MyListings';
 import {Route, Switch} from 'react-router-dom'
 import Header from './Header';
 import {useState, useEffect} from 'react'
-import styled from 'styled-components'
+
 
 function App() {
 
@@ -75,6 +75,7 @@ return (
             <Route exact path='/mylistings'>
                 <MyListings 
                 myListings={myListings} 
+                setMyListings = {setMyListings}
                 onRemove={removeMyListing}/>
             </Route>
         </Switch>

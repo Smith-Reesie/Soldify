@@ -1,5 +1,4 @@
-
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import MLContainer from './MLContainer'
 import MLDisplay from './MLDisplay'
 import styled from "styled-components"
@@ -7,54 +6,33 @@ import MLProfile from './MLProfile'
 import MLSearch from './MLSearch'
 
 
-function MyListings({myListings, onRemove}) {
-const [myListings, setMyListings] = useState ([])
-const [userInput, setUserInput] =useState("")
-// const[qtySold, setQtySold] = useState (0);
-// const[totalSold, setTotalSold] = useState(0);
-const[formState, setFormState] = useState ({
+function MyListings({myListings, setMyListings}) {
 
+  const [userInput, setUserInput] =useState("")
+  const [formState, setFormState] = useState ({
     image: "",
     name: "",
     description: "",
     category: "",
     price: 0
   })
-
-//  DRAFT-> SUM OF SOLD TOTAL - MLPROFILE 
-  function handleSumTotal(totalSold) {
-    const updatedSumTotal = myListings.price.reduce(myListing => {
-      return totalSold + myListing.price
-    });
-    return setMyListings(updatedSumTotal)
+//SUM OF SOLD TOTAL - MLPROFILE 
+  function handleSumTotal(myListings) {
+    let totalPrice = 0;
+    for (const listing of myListings) {
+      totalPrice += listing.price;
+    };
+    return totalPrice;
   }
-
-
-//FETCH FOR USER_LISTINGS ONLY
-  useEffect(() => {
-    fetch("http://localhost:3000/user_listings")
-    .then((response) => response.json())
-    .then((data) => {
-    setMyListings(data);
-    });
-}, []);
-//UPDATE MLDISPLAY W PATCH
-  function handleUpdateListing(editListing) {
-    const updatedListing = myListings.map((listing) =>
-      listing.id === updatedListing.id ? updatedListing : listing);
-      return setMyListings(updatedListing);
-  }
-
-
-//FILTER FOR SEARCH COMP
-
-const searchListings = myListings.filter((myListing) => {
+  
+//ENABLES SEARCH BAR
+  const searchListings = myListings.filter((myListing) => {
     return myListing.name.toLowerCase().includes(userInput.toLowerCase())
     });
 
-  //FUNCTION FOR ONCLICK TO DISPLAY IN MLISTING
-function handleLargeView(clickedListing){
-   
+//FUNCTION FOR LARGE VIEW EVENT --> DISPLAYS IN MLISTING
+  function handleLargeView(clickedListing ){
+      // e.preventDefault()
         setFormState({
         image: clickedListing.image,
         name: clickedListing.name,
@@ -68,26 +46,27 @@ function handleLargeView(clickedListing){
   <>
     <Listborder>
     <MLProfile
-      myListings={myListings} 
-      totalSold= {handleSumTotal}/>
+      myListings={myListings}
+      handleSumTotal= {handleSumTotal}/>
     <MLDisplay 
       myListings={myListings} 
       formState ={formState} 
-      setFormState ={setFormState}
-      editListing = {handleUpdateListing}/>
+      setFormState ={setFormState}/>
+      {/* // editListing = {handleUpdateListing}/> */}
     </Listborder>
     <MLSearch
       userInput = {userInput}
       setUserInput = {setUserInput}/>
     <MLContainer 
-      myListings = {searchListings} 
+      myListings = {searchListings}
+      setMyListings = {setMyListings} 
       searchListings ={searchListings} 
       userInput = {userInput} 
       setUserInput= {setUserInput}
       handleLargeView = {handleLargeView}/>
+
   </>
   );
-
 }
 export default MyListings
 

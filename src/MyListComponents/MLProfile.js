@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function MLProfile ({myListings, totalSold }) {
+function MLProfile ({myListings, totalSold, handleSumTotal }) {
 
 
 
@@ -13,7 +13,7 @@ function MLProfile ({myListings, totalSold }) {
                 <p>Your Seller Stats</p>
                 <label className = "stat label">Units Sold: {myListings.length} </label>
                 {/* <input type="number" name="qtySold" placeholder={qtySold}></input> */}
-                <label className = "stat label">Sold Total: {}</label>
+                <label className = "stat label">Sold Total: {handleSumTotal(myListings)}</label>
                 {/* <input type="number" name="totalSold" placeholder={totalSold}></input> */}
             </div>
             </Profileborder>
@@ -24,12 +24,14 @@ export default MLProfile;
 
 const Profileborder = styled.div`
   border: 1px solid red;
+  padding: 10px;
   width: 500px;
   height: 500px;
   display: flex;
     img {
-        width:50%;
-        height:50%;
+        width:90%;
+        height:70%;
     }
+color: white;
 
 `

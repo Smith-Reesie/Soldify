@@ -3,26 +3,10 @@ import styled from "styled-components"
 
 
 function MLDisplay({ myListings, formState, setFormState, editListing}) {
-    const {id, name, description, category, price} = myListings
+    const { name, description, category, price} = myListings
     
 
-    function handleListingChange() {
-        // const updateObj = {
-        //     image: "",
-        //     name: "",
-        //     description:"",
-        //     category:"",
-        //     price: 0
-        };
-        fetch(`http://localhost:3001/user_listings/${id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify()
-        })
-        .then((r) => r.json())
-        .then(editListing);
+
     
 
 
@@ -34,13 +18,13 @@ function MLDisplay({ myListings, formState, setFormState, editListing}) {
             <img src= {formState.image} alt= {name}/>
                 <input type="text" name={name} placeholder="Name" value={formState.name}/>
 
-                    <button className="edit" onClick={handleListingChange}>🔍</button>
+                    {/* <button className="edit" onClick={handleListingChange}>🔍</button> */}
                 <input type="text" name={description} placeholder="Description" value={formState.description}/>
-                    <button className="edit" onClick={handleListingChange}>🔍</button>
+                    {/* <button className="edit" onClick={handleListingChange}>🔍</button> */}
                 <input type="text" name={category} placeholder="Category" value={formState.category}/>
-                    <button className="edit" onClick={handleListingChange}>🔍</button>
+                    {/* <button className="edit" onClick={handleListingChange}>🔍</button> */}
                 <input type="number" name={price} placeholder="Sell Price" value={formState.price}/>
-                    <button className="edit" onClick={handleListingChange}>🔍</button>
+                    {/* <button className="edit" onClick={handleListingChange}>🔍</button> */}
                             
 
             </div>
@@ -55,11 +39,16 @@ const Listborder = styled.div`
   height: 300px;
   display: flex;
   flex-direction: column;
+  
   input{
       justify-content: first baseline;
+      align-items: center;
+      justify-content: center;
   }
   img{
       width: 100px;
+
+      
   }
 
 `
