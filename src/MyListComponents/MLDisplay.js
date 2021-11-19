@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 
 function MLDisplay({ myListings, formState, setFormState, editListing}) {
-    const {id, name, description, category, price} = myListings
+    const {id, name, image, description, category, price} = myListings
     
 
     function handleListingChange() {
@@ -49,6 +49,7 @@ function MLDisplay({ myListings, formState, setFormState, editListing}) {
     );
 }
 export default MLDisplay
+
 const Listborder = styled.div`
   border: 1px solid red;
   width: 300px;

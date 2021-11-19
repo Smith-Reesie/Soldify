@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import MListings from './MListings'
 import styled from "styled-components"
 
@@ -30,13 +30,13 @@ function MLContainer({ myListings, onRemove, handleLargeView }) {
                         <h5>DESCRIPTION</h5>
                     </th>
                 </tr>
-                {myListings.map((listing) => <MListings
-                    key = {listing.id}
-                    myListing= {listing}
-
-                    handleLargeView = {handleLargeView}
-                    onRemove={onRemove}/>
-
+                {myListings.map((listing) => 
+                            <MListings
+                            key = {listing.id}
+                            myListing= {listing}
+                            handleLargeView = {handleLargeView}
+                            onRemove={onRemove}
+                            />
                     // handleSearch={searchListings}/>
                     // setMyListings = {setMyListings}/>
                 )}
